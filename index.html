@@ -12,31 +12,11 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    background: #0b132b; /* SOLID NIGHT COLOR */
+    background:
+        radial-gradient(circle at top, #1e3c72, #0b132b 55%, #05070d);
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
-}
-
-/* FRAME */
-.frame {
-    height: calc(100vh - 24px);
-    margin: 12px;
-    padding: 24px 18px 90px;
-    border-radius: 26px;
-    background: rgba(0,0,0,0.55);
-    border: 3px solid #ffdca8;
-    box-shadow: 0 0 32px rgba(255,220,168,0.35);
-    text-align: center;
-    position: relative;
-    animation: glowShift 14s ease-in-out infinite;
-}
-
-/* SLOW COLOR GLOW */
-@keyframes glowShift {
-    0%   { box-shadow: 0 0 28px rgba(255,220,168,0.35); }
-    33%  { box-shadow: 0 0 36px rgba(247,161,196,0.45); }
-    66%  { box-shadow: 0 0 38px rgba(139,224,255,0.45); }
-    100% { box-shadow: 0 0 28px rgba(255,220,168,0.35); }
+    color: #fff;
 }
 
 /* STARS */
@@ -44,14 +24,14 @@ html, body {
     position: fixed;
     width: 2px;
     height: 2px;
-    background: #ffffff;
+    background: radial-gradient(circle, #ffffff, #bcd6ff);
     border-radius: 50%;
     opacity: 0.6;
     animation: twinkle 4s infinite ease-in-out;
 }
 
 @keyframes twinkle {
-    0%,100% { opacity: 0.3; }
+    0%,100% { opacity: 0.2; }
     50% { opacity: 1; }
 }
 
@@ -59,10 +39,10 @@ html, body {
 .moon {
     width: 70px;
     height: 70px;
-    margin: 6px auto 12px;
+    margin: 18px auto 10px;
     border-radius: 50%;
-    box-shadow: -12px 0 0 0 #ffe8b0;
-    filter: drop-shadow(0 0 16px rgba(255,232,176,0.9));
+    box-shadow: -14px 0 0 0 #ffe8b0;
+    filter: drop-shadow(0 0 18px rgba(255,232,176,0.9));
     animation: moonGlow 4s ease-in-out infinite alternate;
 }
 
@@ -80,84 +60,115 @@ html, body {
 
 .names {
     font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;
-    line-height: 1.12;
+    font-size: 2.8rem;
+    line-height: 1.15;
+    text-align: center;
 }
 
-.subtitle { color:#d8f1ff; }
-.date { color:#ffdca8; margin:8px 0 18px; }
+.subtitle {
+    text-align: center;
+    color: #e6f4ff;
+    margin-top: 6px;
+}
+
+.date {
+    text-align: center;
+    color: #ffdca8;
+    margin: 8px 0 22px;
+    font-size: 1.2rem;
+}
 
 /* COUNTDOWN */
 .countdown {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    max-width:460px;
-    margin:auto;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
-.box {
-    padding:10px;
-    border-radius:14px;
-    background: rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.35);
-    color:#fff;
+
+.cd-box {
+    min-width: 72px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg,
+        rgba(255,220,168,.35),
+        rgba(139,224,255,.25));
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 18px rgba(255,220,168,.35);
 }
-.number { font-size:1.9rem; font-weight:600; }
-.label { font-size:.72rem; }
+
+.cd-num { font-size: 1.8rem; font-weight: 600; }
+.cd-lab { font-size: .75rem; }
 
 /* AYAH */
-.bismillah { margin-top:18px; font-size:1.5rem; color:#ffe8b0; }
-.ayah {
-    font-family:'Amiri',serif;
-    font-size:1.3rem;
-    color:#fff4cc;
-    max-width:92%;
-    margin:auto;
-    direction:rtl;
-    line-height:1.5;
+.bismillah {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.6rem;
+    color: #ffe8b0;
 }
+
+.ayah {
+    font-family: 'Amiri', serif;
+    font-size: 1.35rem;
+    color: #fff4cc;
+    max-width: 92%;
+    margin: 10px auto;
+    text-align: center;
+    direction: rtl;
+    line-height: 1.55;
+}
+
 .translation {
-    font-size:.92rem;
-    color:#e9f7ff;
-    max-width:92%;
-    margin:auto;
+    text-align: center;
+    font-size: .95rem;
+    color: #e9f7ff;
+    max-width: 92%;
+    margin: auto;
 }
 
 /* BUTTONS */
-.location-btn, .music-btn {
-    display:inline-block;
-    margin-top:14px;
-    padding:10px 24px;
-    border-radius:30px;
-    border:none;
-    cursor:pointer;
-    font-weight:600;
-    background: linear-gradient(135deg,#ffe8b0,#ffb7d5);
-    box-shadow:0 0 14px rgba(255,220,168,.6);
+.actions {
+    text-align: center;
+    margin-top: 16px;
 }
-.music-btn { margin-left:8px; }
+
+.btn {
+    display: inline-block;
+    margin: 6px;
+    padding: 10px 26px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(135deg,#ffe8b0,#ffb7d5,#9fe7ff);
+    color: #000;
+    box-shadow: 0 0 18px rgba(255,220,168,.6);
+}
 
 /* MASJID */
 .masjid {
-    position:absolute;
-    bottom:0; left:0;
-    width:100%; height:70px;
-    background: linear-gradient(to top,rgba(0,0,0,.9),transparent),
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: linear-gradient(to top, rgba(0,0,0,.9), transparent),
     url('data:image/svg+xml;utf8,\
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">\
 <path fill="%23000" d="M0,80 L60,60 L120,80 L180,60 L240,80 L300,50 L360,80 L420,60 L480,80 L540,60 L600,80 L660,50 L720,80 L780,60 L840,80 L900,60 L960,80 L1020,50 L1080,80 L1140,60 L1200,80 L1260,60 L1320,80 L1380,60 L1440,80 L1440,120 L0,120 Z"/>\
 </svg>');
-    background-size:cover;
-    opacity:.7;
+    background-size: cover;
+    opacity: .75;
 }
 
-/* CANVAS */
+/* FIREWORKS CANVAS */
 canvas {
-    position:fixed;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
 }
 </style>
 </head>
@@ -178,8 +189,6 @@ for(let i=0;i<90;i++){
 }
 </script>
 
-<div class="frame">
-
 <div class="moon"></div>
 
 <div class="names soft-gold">
@@ -190,10 +199,10 @@ Shaeque<br>&<br>Nazia
 <div class="date">27 March 2026</div>
 
 <div class="countdown">
-  <div class="box"><div class="number" id="days">0</div><div class="label">Days</div></div>
-  <div class="box"><div class="number" id="hours">0</div><div class="label">Hours</div></div>
-  <div class="box"><div class="number" id="minutes">0</div><div class="label">Minutes</div></div>
-  <div class="box"><div class="number" id="seconds">0</div><div class="label">Seconds</div></div>
+  <div class="cd-box"><div class="cd-num" id="days">0</div><div class="cd-lab">Days</div></div>
+  <div class="cd-box"><div class="cd-num" id="hours">0</div><div class="cd-lab">Hours</div></div>
+  <div class="cd-box"><div class="cd-num" id="minutes">0</div><div class="cd-lab">Minutes</div></div>
+  <div class="cd-box"><div class="cd-num" id="seconds">0</div><div class="cd-lab">Seconds</div></div>
 </div>
 
 <div class="bismillah">﷽</div>
@@ -209,13 +218,13 @@ so that you may find tranquility in them; and He placed between you love and mer
 (Qur’an 30:21)
 </div>
 
-<a class="location-btn" target="_blank"
-href="https://www.google.com/maps/search/Hotel+Maurya+Patna">📍 Venue</a>
-
-<button class="music-btn" onclick="toggleMusic()">🎵 Nasheed</button>
+<div class="actions">
+  <a class="btn" target="_blank"
+     href="https://www.google.com/maps/search/Hotel+Maurya+Patna">📍 Venue</a>
+  <button class="btn" onclick="toggleMusic()">🎵 Nasheed</button>
+</div>
 
 <div class="masjid"></div>
-</div>
 
 <audio id="nasheed" loop>
   <source src="nasheed.mp3" type="audio/mpeg">
@@ -235,12 +244,12 @@ setInterval(()=>{
  }
 },1000);
 
-// MUSIC TOGGLE
+// MUSIC
 const music=document.getElementById("nasheed");
 let playing=false;
 function toggleMusic(){
- if(!playing){ music.play(); playing=true; }
- else{ music.pause(); playing=false; }
+ playing ? music.pause() : music.play();
+ playing=!playing;
 }
 
 // STAR FIREWORKS
@@ -250,8 +259,8 @@ canvas.width=innerWidth; canvas.height=innerHeight;
 
 function drawStar(x,y,r,color){
  ctx.save();
- ctx.beginPath();
  ctx.translate(x,y);
+ ctx.beginPath();
  ctx.moveTo(0,-r);
  for(let i=0;i<5;i++){
   ctx.rotate(Math.PI/5);
@@ -271,9 +280,9 @@ function starBurst(){
  const x=Math.random()*canvas.width;
  const y=Math.random()*canvas.height*0.6;
  const hue=Math.random()*360;
- for(let i=0;i<18;i++){
+ for(let i=0;i<16;i++){
   const a=Math.random()*Math.PI*2;
-  const d=Math.random()*80;
+  const d=Math.random()*70;
   setTimeout(()=>{
    drawStar(
     x+Math.cos(a)*d,
@@ -288,7 +297,7 @@ function starBurst(){
 setInterval(()=>{
  ctx.clearRect(0,0,canvas.width,canvas.height);
  starBurst();
-},1600);
+},1800);
 </script>
 
 </body>
