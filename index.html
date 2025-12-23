@@ -10,7 +10,6 @@
 <style>
 html, body {
     margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at top, #0b0f1a, #000);
@@ -22,27 +21,40 @@ html, body {
 .frame {
     height: calc(100vh - 24px);
     margin: 12px;
-    padding: 24px 18px 80px;
+    padding: 24px 18px 90px;
     border-radius: 26px;
     background:
         linear-gradient(#000, #000) padding-box,
-        linear-gradient(135deg,
-            #ffdca8,
-            #f7a1c4,
-            #8be0ff,
-            #7fffd4,
-            #ffdca8) border-box;
+        linear-gradient(135deg,#ffdca8,#f7a1c4,#8be0ff,#7fffd4,#ffdca8) border-box;
     border: 3px solid transparent;
     box-shadow: 0 0 40px rgba(255,220,168,0.35);
     text-align: center;
     position: relative;
+    animation: glowShift 14s ease-in-out infinite;
 }
 
-/* TEXT SOFT GOLD */
-.soft-gold {
-    background: linear-gradient(90deg, #ffe8b0, #fff6d5, #ffdca8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+@keyframes glowShift {
+    0% { box-shadow: 0 0 32px rgba(255,220,168,0.35); }
+    25% { box-shadow: 0 0 38px rgba(247,161,196,0.45); }
+    50% { box-shadow: 0 0 40px rgba(139,224,255,0.45); }
+    75% { box-shadow: 0 0 38px rgba(127,255,212,0.45); }
+    100% { box-shadow: 0 0 32px rgba(255,220,168,0.35); }
+}
+
+/* STARS */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 1; }
 }
 
 /* MOON */
@@ -61,163 +73,110 @@ html, body {
     to { transform: scale(1.12); opacity: 1; }
 }
 
-/* NAMES */
+/* TEXT */
+.soft-gold {
+    background: linear-gradient(90deg,#ffe8b0,#fff6d5,#ffdca8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .names {
     font-family: 'Playfair Display', serif;
     font-size: 2.6rem;
     line-height: 1.12;
-    margin-top: 6px;
 }
 
-/* SUBTEXT */
-.subtitle {
-    color: #d8f1ff;
-    font-size: 1.05rem;
-}
-
-.date {
-    color: #ffdca8;
-    font-size: 1.25rem;
-    margin: 8px 0 18px;
-}
+.subtitle { color:#d8f1ff; }
+.date { color:#ffdca8; margin:8px 0 18px; }
 
 /* COUNTDOWN */
 .countdown {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    max-width: 460px;
-    margin: auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    max-width:460px;
+    margin:auto;
 }
-
 .box {
-    padding: 10px;
-    border-radius: 14px;
-    background: linear-gradient(135deg,
-        rgba(255,220,168,0.25),
-        rgba(139,224,255,0.18));
-    border: 1px solid rgba(255,255,255,0.35);
-    color: #fff;
+    padding:10px;
+    border-radius:14px;
+    background:linear-gradient(135deg,rgba(255,220,168,.25),rgba(139,224,255,.18));
+    border:1px solid rgba(255,255,255,.35);
+    color:#fff;
 }
-
-.number {
-    font-size: 1.9rem;
-    font-weight: 600;
-}
-
-.label {
-    font-size: 0.72rem;
-}
+.number { font-size:1.9rem; font-weight:600; }
+.label { font-size:.72rem; }
 
 /* AYAH */
-.bismillah {
-    margin-top: 18px;
-    font-size: 1.5rem;
-    color: #ffe8b0;
-    animation: fadeIn 3s ease forwards;
-}
-
+.bismillah { margin-top:18px; font-size:1.5rem; color:#ffe8b0; }
 .ayah {
-    margin: 10px auto 6px;
-    font-family: 'Amiri', serif;
-    font-size: 1.3rem;
-    color: #fff4cc;
-    max-width: 92%;
-    direction: rtl;
-    line-height: 1.5;
+    font-family:'Amiri',serif;
+    font-size:1.3rem;
+    color:#fff4cc;
+    max-width:92%;
+    margin:auto;
+    direction:rtl;
+    line-height:1.5;
 }
-
 .translation {
-    font-size: 0.92rem;
-    color: #e9f7ff;
-    max-width: 92%;
-    margin: auto;
-    line-height: 1.45;
+    font-size:.92rem;
+    color:#e9f7ff;
+    max-width:92%;
+    margin:auto;
 }
 
-/* LOCATION BUTTON */
-.location-btn {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 11px 26px;
-    border-radius: 30px;
-    text-decoration: none;
-    color: #000;
-    font-weight: 600;
-    background: linear-gradient(135deg, #ffe8b0, #ffb7d5);
-    box-shadow: 0 0 16px rgba(255,220,168,0.6);
+/* BUTTONS */
+.location-btn, .music-btn {
+    display:inline-block;
+    margin-top:14px;
+    padding:10px 24px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    background:linear-gradient(135deg,#ffe8b0,#ffb7d5);
+    box-shadow:0 0 14px rgba(255,220,168,.6);
 }
+.music-btn { margin-left:8px; }
 
-/* MASJID SILHOUETTE */
+/* MASJID */
 .masjid {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent),
-        url('data:image/svg+xml;utf8,\
+    position:absolute;
+    bottom:0; left:0;
+    width:100%; height:70px;
+    background:linear-gradient(to top,rgba(0,0,0,.9),transparent),
+    url('data:image/svg+xml;utf8,\
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">\
 <path fill="%23000" d="M0,80 L60,60 L120,80 L180,60 L240,80 L300,50 L360,80 L420,60 L480,80 L540,60 L600,80 L660,50 L720,80 L780,60 L840,80 L900,60 L960,80 L1020,50 L1080,80 L1140,60 L1200,80 L1260,60 L1320,80 L1380,60 L1440,80 L1440,120 L0,120 Z"/>\
 </svg>');
-    background-size: cover;
-    opacity: 0.7;
+    background-size:cover;
+    opacity:.7;
 }
 
-/* PARTICLES */
-.particle {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, #ffe8b0, #ff9fcf);
-    border-radius: 50%;
-    animation: float 14s linear infinite;
-}
-
-@keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
-}
-
-/* FIREWORKS */
-.firework {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, #ffe8b0, #8be0ff);
-    border-radius: 50%;
-    animation: explode 1.6s ease-out forwards;
-}
-
-@keyframes explode {
-    from { transform: scale(0); opacity: 1; }
-    to { transform: scale(18); opacity: 0; }
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 12px;
-    font-size: 0.75rem;
-    color: #aaa;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* FIREWORK CANVAS */
+canvas {
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PARTICLES -->
+<canvas id="fireworks"></canvas>
+
 <script>
-for (let i = 0; i < 18; i++) {
-    const p = document.createElement("div");
-    p.className = "particle";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.animationDuration = 10 + Math.random() * 8 + "s";
-    document.body.appendChild(p);
+// STARS
+for(let i=0;i<70;i++){
+    const s=document.createElement("div");
+    s.className="star";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*50+"vh";
+    s.style.animationDuration=3+Math.random()*4+"s";
+    document.body.appendChild(s);
 }
 </script>
 
@@ -225,27 +184,22 @@ for (let i = 0; i < 18; i++) {
 
 <div class="moon"></div>
 
-<div class="names soft-gold">
-Shaeque<br>&<br>Nazia
-</div>
-
+<div class="names soft-gold">Shaeque<br>&<br>Nazia</div>
 <div class="subtitle">We Are Getting Married</div>
 <div class="date">27 March 2026</div>
 
 <div class="countdown">
-    <div class="box"><div class="number" id="days">0</div><div class="label">Days</div></div>
-    <div class="box"><div class="number" id="hours">0</div><div class="label">Hours</div></div>
-    <div class="box"><div class="number" id="minutes">0</div><div class="label">Minutes</div></div>
-    <div class="box"><div class="number" id="seconds">0</div><div class="label">Seconds</div></div>
+  <div class="box"><div class="number" id="days">0</div><div class="label">Days</div></div>
+  <div class="box"><div class="number" id="hours">0</div><div class="label">Hours</div></div>
+  <div class="box"><div class="number" id="minutes">0</div><div class="label">Minutes</div></div>
+  <div class="box"><div class="number" id="seconds">0</div><div class="label">Seconds</div></div>
 </div>
 
 <div class="bismillah">﷽</div>
-
 <div class="ayah">
 وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا
 وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
 </div>
-
 <div class="translation">
 And among His signs is that He created for you spouses from among yourselves,
 so that you may find tranquility in them; and He placed between you love and mercy.
@@ -253,55 +207,58 @@ so that you may find tranquility in them; and He placed between you love and mer
 </div>
 
 <a class="location-btn" target="_blank"
-href="https://www.google.com/maps/search/Hotel+Maurya+Patna">
-📍 Venue Location
-</a>
+href="https://www.google.com/maps/search/Hotel+Maurya+Patna">📍 Venue</a>
 
-<div class="footer">
-Tap anywhere to begin nasheed 🎵 <br>
-With the blessings of Allah ﷻ
-</div>
+<button class="music-btn" onclick="toggleMusic()">🎵 Nasheed</button>
 
 <div class="masjid"></div>
-
 </div>
 
-<audio id="bgMusic" loop>
+<audio id="nasheed" loop>
   <source src="nasheed.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 // COUNTDOWN
-const weddingDate = new Date("March 27, 2026 00:00:00").getTime();
-setInterval(() => {
-  const now = new Date().getTime();
-  const diff = weddingDate - now;
-  if (diff > 0) {
-    days.innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-    hours.innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    minutes.innerText = Math.floor((diff / (1000 * 60)) % 60);
-    seconds.innerText = Math.floor((diff / 1000) % 60);
-  }
-}, 1000);
+const weddingDate=new Date("March 27, 2026 00:00:00").getTime();
+setInterval(()=>{
+ const now=new Date().getTime();
+ const d=weddingDate-now;
+ if(d>0){
+  days.textContent=Math.floor(d/86400000);
+  hours.textContent=Math.floor(d/3600000)%24;
+  minutes.textContent=Math.floor(d/60000)%60;
+  seconds.textContent=Math.floor(d/1000)%60;
+ }
+},1000);
 
-// FIREWORKS EVERY DAY
-setInterval(() => {
-    const f = document.createElement("div");
-    f.className = "firework";
-    f.style.left = Math.random() * 100 + "vw";
-    f.style.top = Math.random() * 60 + "vh";
-    document.body.appendChild(f);
-    setTimeout(() => f.remove(), 1600);
-}, 1200);
+// MUSIC TOGGLE
+const music=document.getElementById("nasheed");
+let playing=false;
+function toggleMusic(){
+ if(!playing){ music.play(); playing=true; }
+ else{ music.pause(); playing=false; }
+}
 
-// AUDIO
-let started = false;
-document.addEventListener("click", () => {
-  if (!started) {
-    document.getElementById("bgMusic").play();
-    started = true;
-  }
-});
+// REAL FIREWORKS
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth; canvas.height=innerHeight;
+
+function firework(){
+ const x=Math.random()*canvas.width;
+ const y=Math.random()*canvas.height*0.6;
+ for(let i=0;i<40;i++){
+  ctx.beginPath();
+  ctx.arc(x,y,2,0,Math.PI*2);
+  ctx.fillStyle=`hsl(${Math.random()*360},100%,70%)`;
+  ctx.fill();
+ }
+}
+setInterval(()=>{
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ firework();
+},1200);
 </script>
 
 </body>
