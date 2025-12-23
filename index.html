@@ -12,8 +12,7 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at top, #1b2a4e 0%, #0e1425 45%, #05070d 100%);
+    background: #0b132b; /* SOLID NIGHT COLOR */
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
 }
@@ -24,11 +23,9 @@ html, body {
     margin: 12px;
     padding: 24px 18px 90px;
     border-radius: 26px;
-    background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)) padding-box,
-        linear-gradient(135deg,#ffdca8,#f7a1c4,#8be0ff,#7fffd4,#ffdca8) border-box;
-    border: 3px solid transparent;
-    box-shadow: 0 0 38px rgba(255,220,168,0.35);
+    background: rgba(0,0,0,0.55);
+    border: 3px solid #ffdca8;
+    box-shadow: 0 0 32px rgba(255,220,168,0.35);
     text-align: center;
     position: relative;
     animation: glowShift 14s ease-in-out infinite;
@@ -36,11 +33,10 @@ html, body {
 
 /* SLOW COLOR GLOW */
 @keyframes glowShift {
-    0% { box-shadow: 0 0 30px rgba(255,220,168,0.35); }
-    25% { box-shadow: 0 0 36px rgba(247,161,196,0.45); }
-    50% { box-shadow: 0 0 40px rgba(139,224,255,0.45); }
-    75% { box-shadow: 0 0 36px rgba(127,255,212,0.45); }
-    100% { box-shadow: 0 0 30px rgba(255,220,168,0.35); }
+    0%   { box-shadow: 0 0 28px rgba(255,220,168,0.35); }
+    33%  { box-shadow: 0 0 36px rgba(247,161,196,0.45); }
+    66%  { box-shadow: 0 0 38px rgba(139,224,255,0.45); }
+    100% { box-shadow: 0 0 28px rgba(255,220,168,0.35); }
 }
 
 /* STARS */
@@ -48,14 +44,14 @@ html, body {
     position: fixed;
     width: 2px;
     height: 2px;
-    background: radial-gradient(circle, #ffffff, #bcd6ff);
+    background: #ffffff;
     border-radius: 50%;
-    opacity: 0.5;
+    opacity: 0.6;
     animation: twinkle 4s infinite ease-in-out;
 }
 
 @keyframes twinkle {
-    0%,100% { opacity: 0.2; }
+    0%,100% { opacity: 0.3; }
     50% { opacity: 1; }
 }
 
@@ -102,8 +98,8 @@ html, body {
 .box {
     padding:10px;
     border-radius:14px;
-    background:linear-gradient(135deg,rgba(255,220,168,.25),rgba(139,224,255,.18));
-    border:1px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.35);
     color:#fff;
 }
 .number { font-size:1.9rem; font-weight:600; }
@@ -136,7 +132,7 @@ html, body {
     border:none;
     cursor:pointer;
     font-weight:600;
-    background:linear-gradient(135deg,#ffe8b0,#ffb7d5);
+    background: linear-gradient(135deg,#ffe8b0,#ffb7d5);
     box-shadow:0 0 14px rgba(255,220,168,.6);
 }
 .music-btn { margin-left:8px; }
@@ -146,7 +142,7 @@ html, body {
     position:absolute;
     bottom:0; left:0;
     width:100%; height:70px;
-    background:linear-gradient(to top,rgba(0,0,0,.9),transparent),
+    background: linear-gradient(to top,rgba(0,0,0,.9),transparent),
     url('data:image/svg+xml;utf8,\
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">\
 <path fill="%23000" d="M0,80 L60,60 L120,80 L180,60 L240,80 L300,50 L360,80 L420,60 L480,80 L540,60 L600,80 L660,50 L720,80 L780,60 L840,80 L900,60 L960,80 L1020,50 L1080,80 L1140,60 L1200,80 L1260,60 L1320,80 L1380,60 L1440,80 L1440,120 L0,120 Z"/>\
@@ -172,7 +168,7 @@ canvas {
 
 <script>
 // STARS
-for(let i=0;i<80;i++){
+for(let i=0;i<90;i++){
     const s=document.createElement("div");
     s.className="star";
     s.style.left=Math.random()*100+"vw";
@@ -283,7 +279,7 @@ function starBurst(){
     x+Math.cos(a)*d,
     y+Math.sin(a)*d,
     4,
-    `hsl(${hue},90%,70%)`
+    `hsl(${hue},85%,70%)`
    );
   },i*25);
  }
@@ -293,11 +289,6 @@ setInterval(()=>{
  ctx.clearRect(0,0,canvas.width,canvas.height);
  starBurst();
 },1600);
-
-window.addEventListener("resize",()=>{
- canvas.width=innerWidth;
- canvas.height=innerHeight;
-});
 </script>
 
 </body>
